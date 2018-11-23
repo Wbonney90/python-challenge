@@ -40,7 +40,7 @@ with open(csvpath, newline="") as csvfile:
 
   #* The average change in "Profit/Losses" between months over the entire period
 
-  
+
 
   #* The greatest increase in profits (date and amount) over the entire period
 
