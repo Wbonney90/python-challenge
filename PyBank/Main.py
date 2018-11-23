@@ -8,16 +8,39 @@
 import os
 import csv
 
-csvreader = os.path.join("..","")
+total = 0
 
+csvpath = os.path.join("..","PyBank","budget_data.csv")
+with open(csvpath, newline="") as csvfile:
+    csvreader = csv.reader(csvfile, delimiter=",")
+    #print(csvreader)
 
-#* Your task is to create a Python script that analyzes the records to calculate each of the following:
+    csv_header = next(csvreader)
+    print(f"CSV Header: {csv_header}")
 
-  #* The total number of months included in the dataset
+    # * The total number of months included in the dataset
+    numline=len(csvfile.readlines())
+    print("Total Month: ", numline)
 
-  #* The total net amount of "Profit/Losses" over the entire period
+    # * The total net amount of "Profit/Losses" over the entire period
+with open(csvpath, newline="") as csvfile:
+    csvreader = csv.reader(csvfile, delimiter=",")
+    net_profit=[]
+    for rows in csvreader:
+        net_profit.append(rows[1])
+    net_profit.remove("Profit/Losses")
+    net_profit = [int(rows) for rows in net_profit]
+    total_net = ("Total: $" + str(sum(net_profit)))
+    print(total_net)
+
+    #Failed attempt to total column 2
+    #for row in csv.reader(csvfile):
+        #total += float(row[column2])
+    #print(total)
 
   #* The average change in "Profit/Losses" between months over the entire period
+
+  
 
   #* The greatest increase in profits (date and amount) over the entire period
 
